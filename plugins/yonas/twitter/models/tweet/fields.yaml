@@ -1,0 +1,29 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        required: 1
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    description:
+        label: Tweet
+        span: full
+        size: large
+        type: textarea
+    image:
+        label: Images
+        span: auto
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        imageWidth: '100'
+        imageHeight: '100'
+        type: fileupload

@@ -1,0 +1,85 @@
+[builderList]
+modelClass = "Yonas\Twitter\Models\Tweet"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[viewBag]
+==
+<div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Click to Tweet</h2>
+                <p class="text-center wow fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </div>
+
+
+
+
+
+
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {% for record in records %}
+
+                                    {# Use spaceless tag to remove spaces inside the A tag. #}
+                                    {% spaceless %}
+                                        {% if detailsPage %}
+                                            <!-- <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}"> -->
+                                        {% endif %}
+
+                                        <div class="row">
+                                            <div class="features">
+                                                <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms">
+                                                    <div class="media service-box">
+                                                        <div class="pull-left">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </div>
+
+                                        <div class="media-body">
+                                            <h4 class="media-heading">  {{ record.title }}</h4>
+                                            <p>{{record.description|raw}}</p>
+                                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.description}}">Tweet</a>
+                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                        </div>
+
+                                      </div>
+                                  </div>
+
+                                        {% if detailsPage %}
+                                            <!-- </a> -->
+                                        {% endif %}
+                                    {% endspaceless %}
+
+                            {% else %}
+                                <li class="no-data">{{ noRecordsMessage }}</li>
+                            {% endfor %}
+
+
+                </div>
+            </div><!--/.row-->
+      <!--/.container-->

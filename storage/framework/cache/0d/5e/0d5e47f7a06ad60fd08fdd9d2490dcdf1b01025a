@@ -1,0 +1,29 @@
+1615880969a:1:{s:7:"404.htm";a:9:{s:8:"fileName";s:7:"404.htm";s:7:"content";s:571:"title = "404"
+url = "/404"
+layout = "frame"
+is_hidden = 0
+==
+
+
+    <!-- Not Found area -->
+    <section class="not_found_area">
+        <h2>404 PAGE NOT FOUND</h2>
+        <p>This page is temporarily unavailable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h1>404</h1>
+        <form action="#" class="search_error">
+            <input type="search" name="search" class="form-control" placeholder="Search">
+            <a href="#"><i class="fa fa-search"></i> </a>
+        </form>
+    </section>
+    <!-- End Not Found area -->
+";s:5:"mtime";i:1615880335;s:6:"markup";s:495:"<!-- Not Found area -->
+    <section class="not_found_area">
+        <h2>404 PAGE NOT FOUND</h2>
+        <p>This page is temporarily unavailable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h1>404</h1>
+        <form action="#" class="search_error">
+            <input type="search" name="search" class="form-control" placeholder="Search">
+            <a href="#"><i class="fa fa-search"></i> </a>
+        </form>
+    </section>
+    <!-- End Not Found area -->";s:4:"code";N;s:5:"title";s:3:"404";s:3:"url";s:4:"/404";s:6:"layout";s:5:"frame";s:9:"is_hidden";s:1:"0";}}

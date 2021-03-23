@@ -1,0 +1,11 @@
+name: Tweets
+modelClass: Yonas\Twitter\Models\Tweet
+form: $/yonas/twitter/models/tweet/fields.yaml
+defaultRedirect: yonas/twitter/tweets
+create:
+    redirect: 'yonas/twitter/tweets/update/:id'
+    redirectClose: yonas/twitter/tweets
+update:
+    redirect: yonas/twitter/tweets
+    redirectClose: yonas/twitter/tweets
+preview: {  }

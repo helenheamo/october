@@ -1,0 +1,171 @@
+description = "Blog Partial"
+
+[builderList]
+modelClass = "Yonas\Twitter\Models\Tweet"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<section class="blog" id="blog">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- section title -->
+            <div class="col-xl-6 col-lg-8">
+                <div class="title text-center ">
+                    <h2> Latest <span class="color">Posts</span></h2>
+                    <div class="border"></div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus facere accusamus,
+                        reprehenderit
+                        libero inventore nam.
+                    </p>
+                </div>
+            </div>
+            <!-- /section title -->
+        </div>
+
+        <div class="row">
+            <!-- single blog post -->
+
+
+
+
+
+
+
+
+                {% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<ul class="record-list">
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+
+
+                <article class="col-lg-4 col-md-6">
+                    <div class="post-item">
+                        <!-- <div class="media-wrapper">
+                            <img loading="lazy" src="{{ 'assets/images/blog/post-2.jpg'|theme }}"
+                                alt="amazing caves coverimage" class="img-fluid">
+                        </div> -->
+
+                        <div class="content">
+                            <h3><a href="{{ 'single-post'|page }}"> {{ record.title }}</a></h3>
+
+                            {% for img in record.image %}
+
+                            <img src = "{{img.thumb(150,auto)}}">
+                            {% endfor %}
+                      
+                                {{record.description|raw}}
+
+
+
+
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://yoururl.com" data-text="{{record.description|raw}}">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+                    </div>
+                </article>
+
+
+
+
+
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+</ul>
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+            <!-- /single blog post -->
+
+            <!-- single blog post -->
+            <article class="col-lg-4 col-md-6">
+                <div class="post-item">
+                    <div class="media-wrapper">
+                        <img loading="lazy" src="{{ 'assets/images/blog/post-2.jpg'|theme }}"
+                            alt="amazing caves coverimage" class="img-fluid">
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="{{ 'single-post'|page }}">A Few Moments</a></h3>
+                        <p>
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non skateboard dolor brunch.
+                        </p>
+                        <a class="btn btn-main" href="{{ 'single-post'|page }}">Read more</a>
+                    </div>
+                </div>
+            </article>
+            <!-- end single blog post -->
+
+            <!-- single blog post -->
+            <article class="col-lg-4 col-md-6">
+                <div class="post-item">
+                    <div class="media-wrapper">
+                        <img loading="lazy" src="{{ 'assets/images/blog/post-3.jpg'|theme }}"
+                            alt="amazing caves coverimage" class="img-fluid">
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="{{ 'single-post'|page }}">Hints for Life</a></h3>
+                        <p>
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. 3 wolf moon officia aute, non skateboard dolor brunch.
+                        </p>
+                        <a class="btn btn-main" href="{{ 'single-post'|page }}">Read more</a>
+                    </div>
+                </div>
+            </article>
+            <!-- end single blog post -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section> <!-- end section -->

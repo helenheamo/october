@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table yonas_twitter_tweet'
+    - builder_table_create_yonas_twitter_tweet.php
+1.0.3:
+    - 'Updated table yonas_twitter_tweet'
+    - builder_table_update_yonas_twitter_tweet.php
+1.0.4:
+    - 'Updated table yonas_twitter_tweet'
+    - builder_table_update_yonas_twitter_tweet_2.php
+1.0.5:
+    - 'Updated table yonas_twitter_tweet'
+    - builder_table_update_yonas_twitter_tweet_3.php

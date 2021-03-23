@@ -1,0 +1,11 @@
+name: TOP Builder
+description: 'TOP Builder'
+author: GustavoA
+homepage: 'http://amerip.com/themes'
+code: amerip-topbuilder
+
+
+            
+require:
+    - cyd293.backendskin
+    - RainLab.Pages

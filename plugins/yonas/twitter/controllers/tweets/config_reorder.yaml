@@ -1,0 +1,4 @@
+title: Tweets
+modelClass: Yonas\Twitter\Models\Tweet
+toolbar:
+    buttons: reorder_toolbar

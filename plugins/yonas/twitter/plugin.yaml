@@ -1,0 +1,23 @@
+plugin:
+    name: 'yonas.twitter::lang.plugin.name'
+    description: 'yonas.twitter::lang.plugin.description'
+    author: Yonas
+    icon: oc-icon-twitter
+    homepage: ''
+navigation:
+    tweet:
+        label: Tweet
+        url: yonas/twitter/tweets
+        icon: icon-twitter
+        permissions: {  }
+        sideMenu:
+            side-menu-item:
+                label: Skype
+                url: yonas/twitter/tweets
+                icon: icon-skype
+                permissions:
+                    - 'manage tweets'
+permissions:
+    'manage tweets':
+        tab: 'yonas.twitter::lang.plugin.name'
+        label: Tweet

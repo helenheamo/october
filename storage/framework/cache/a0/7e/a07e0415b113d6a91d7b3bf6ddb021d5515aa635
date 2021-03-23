@@ -1,0 +1,200 @@
+1615915099a:1:{s:17:"index/service.htm";a:8:{s:8:"fileName";s:17:"index/service.htm";s:7:"content";s:3931:"description = "Service Partial"
+
+[builderList]
+modelClass = "Yonas\Twitter\Models\Tweet"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[viewBag]
+==
+<section class="service-2 section">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+                <!-- section title -->
+
+
+                <div class="title text-center">
+                    <h2>Click to Tweet</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit. Voluptates, earum. </p>
+                    <div class="border"></div>
+                </div>
+                <!-- /section title -->
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- <div class="col-md-4 text-center d-none d-md-block">
+                <img loading="lazy" src="{{ 'assets/images/about/member.jpg'|theme }}" class="img-fluid inline-block" alt="">
+            </div> -->
+
+
+
+
+            {% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<!-- <div class="col-md-8">
+    <div class="row text-center"> -->
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <!-- <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}"> -->
+                {% endif %}
+
+
+
+
+
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="service-item">
+                                            <!-- <i class="tf-ion-ios-alarm-outline"></i> -->
+                                            <h4> {{record.title }}</h4>
+                                            <p>  {{record.description|raw}} </P>
+
+                                              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://yoururl.com" data-text = "{{record.description|raw}}">Tweet</a>
+                                              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                        </div>
+
+                                    </div>
+
+
+
+                {% if detailsPage %}
+                    <!-- </a> -->
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+</div>
+</div>
+
+</section> <!-- End section -->
+";s:5:"mtime";i:1615885127;s:6:"markup";s:3638:"<section class="service-2 section">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+                <!-- section title -->
+
+
+                <div class="title text-center">
+                    <h2>Click to Tweet</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit. Voluptates, earum. </p>
+                    <div class="border"></div>
+                </div>
+                <!-- /section title -->
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- <div class="col-md-4 text-center d-none d-md-block">
+                <img loading="lazy" src="{{ 'assets/images/about/member.jpg'|theme }}" class="img-fluid inline-block" alt="">
+            </div> -->
+
+
+
+
+            {% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<!-- <div class="col-md-8">
+    <div class="row text-center"> -->
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <!-- <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}"> -->
+                {% endif %}
+
+
+
+
+
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="service-item">
+                                            <!-- <i class="tf-ion-ios-alarm-outline"></i> -->
+                                            <h4> {{record.title }}</h4>
+                                            <p>  {{record.description|raw}} </P>
+
+                                              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://yoururl.com" data-text = "{{record.description|raw}}">Tweet</a>
+                                              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                        </div>
+
+                                    </div>
+
+
+
+                {% if detailsPage %}
+                    <!-- </a> -->
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+</div>
+</div>
+
+</section> <!-- End section -->";s:4:"code";N;s:11:"description";s:15:"Service Partial";s:11:"builderList";a:8:{s:10:"modelClass";s:26:"Yonas\Twitter\Models\Tweet";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:5:"title";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:1:"-";s:19:"detailsUrlParameter";s:2:"id";s:10:"pageNumber";s:11:"{{ :page }}";}s:7:"viewBag";a:0:{}}}
