@@ -1,10 +1,15 @@
 title = "contact"
 url = "/contact"
 layout = "default"
-is_hidden = 0
+is_hidden = 1
+
+[session]
+security = "user"
 ==
+{% component 'session' %}
 {% partial 'header' %}
-<section class="page-banner-section pt-75 pb-75 img-bg" style="background-image: url('/themes/pkurg-spacebootstrap5/assets/img/bg/common-bg.svg')">
+
+<!-- <section class="page-banner-section pt-75 pb-75 img-bg" style="background-image: url('/themes/pkurg-spacebootstrap5/assets/img/bg/common-bg.svg')">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -22,7 +27,7 @@ is_hidden = 0
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- ========================= page-banner-section end ========================= -->
 
         <!-- ========================= contact-section start ========================= -->

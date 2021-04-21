@@ -2,7 +2,7 @@ fields:
     title:
         label: Title
         span: auto
-        required: 1
+        required: 0
         type: text
     content:
         label: Content
@@ -33,7 +33,7 @@ fields:
         span: auto
         type: relation
     images:
-        label: 'Tweet Images'
+        label: 'Tweet Image'
         mode: image
         imageWidth: '80'
         imageHeight: '80'
@@ -42,4 +42,5 @@ fields:
             mode: crop
             extension: auto
         span: auto
+        required: 0
         type: fileupload

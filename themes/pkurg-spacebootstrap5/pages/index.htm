@@ -11,42 +11,33 @@ displayColumn = "title"
 noRecordsMessage = "No records found"
 detailsPage = "-"
 detailsUrlParameter = "id"
+recordsPerPage = 12
 pageNumber = "{{ :page }}"
-
-[session]
-security = "all"
-redirect = "index"
 ==
 {% partial 'header' %}
 
-{% component 'session' %}
 
-<!-- <section id="home" class="hero-section">
+
+<section id="home" class="hero-section">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-xl-5 col-lg-6">
-                <div class="hero-content-wrapper">
-                    <h2 class="mb-25 wow fadeInDown" data-wow-delay=".2s">Bootstrap 5</h2>
-                    <h1 class="mb-25 wow fadeInDown" data-wow-delay=".2s">Multipurpose Website Template</h1>
-                    <p class="mb-35 wow fadeInLeft" data-wow-delay=".4s">At vero eos et accusamus et iusto odio
-                    dignissimos ducimus quiblanditiis praesentium</p>
-                    <a href="javascript:void(0)" class="theme-btn">Get Started</a>
-                </div>
-            </div>
+
             <div class="col-xl-7 col-lg-6">
                 <div class="hero-img">
                     <div class="d-inline-block hero-img-right">
-                        <img src="/themes/pkurg-spacebootstrap5/assets/img/hero/hero-img.png" alt="" class="wow fadeInRight" data-wow-delay=".5s">
-                        <img src="/themes/pkurg-spacebootstrap5/assets/img/hero/dots.shape.svg" alt="" class="dot-shape">
-                        <div class="video-btn">
-                            <a href="https://www.youtube.com/" class="glightbox"><i class="lni lni-play"></i></a>
-                        </div>
+
+                            <br>
+
+
+
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section> -->
+</section>
 <!-- ========================= hero-section end ========================= -->
 
 <!-- ========================= client-logo-section start ========================= -->
@@ -88,7 +79,7 @@ redirect = "index"
 
             </div>
 
-            <h3 class="wow fadeInUp" data-wow-delay=".6s">Click for Tweet</h3>
+            <h3 class="wow fadeInUp" data-wow-delay=".6s">Click To Tweet</h3>
             <hr>
         </div>
 
@@ -135,11 +126,11 @@ redirect = "index"
 
                             {% endfor %}
                         </div>
-                        <!-- {% for image in record.images %}
+                        {% for image in record.images %}
 
-                          <img src = "{{image.thmb(80,80,{'mode':'crop'})}}"
+                          <img src = "{{image.path}}}">
 
-                        {% endfor %} -->
+                        {% endfor %}
 
                         <!-- <div class="feature-icon box-icon-style">
                             <i class="lni lni-twitter"></i>
@@ -246,9 +237,11 @@ redirect = "index"
                             presentation websit or a complex web application our design</p>
                             <div class="counter-up wow fadeInUp" data-wow-delay=".5s">
                                 <div class="counter">
-                                    <span id="secondo" class="countup count color-1" cup-end="30" cup-append="k">10</span>
-                                    <h4>Happy Client</h4>
-                                    <p>We Crafted an awesome design <br class="d-none d-md-block d-lg-none d-xl-block"> library that is robust and</p>
+
+
+                                   <span id="secondo" class="countup count color-1" cup-end="30" cup-append="k">10</span>
+                                   <h4>Happy Client</h4>
+                                   <p>We Crafted an awesome design <br class="d-none d-md-block d-lg-none d-xl-block"> library that is robust and</p>
                                 </div>
                                 <div class="counter">
                                     <span id="secondo" class="countup count color-2" cup-end="42" cup-append="k">5</span>

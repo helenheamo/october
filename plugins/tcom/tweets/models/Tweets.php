@@ -36,7 +36,7 @@ class Tweets extends Model
       ]
     ];
 
-    public $attachMany = [
+    public $attachOne = [
 'images' => 'System\Models\File'
 ];
 

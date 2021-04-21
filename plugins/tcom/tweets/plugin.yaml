@@ -14,3 +14,7 @@ navigation:
                 label: Mentions
                 url: tcom/tweets/mentions
                 icon: icon-users
+permissions:
+    Content:
+        tab: 'tcom.tweets::lang.plugin.name'
+        label: 'Tweet Content '

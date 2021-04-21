@@ -1,0 +1,407 @@
+1619036920a:1:{s:10:"slider.htm";a:9:{s:8:"fileName";s:10:"slider.htm";s:7:"content";s:7495:"[twitterFavorites]
+count = 2
+random = 1
+
+[builderList]
+modelClass = "Tcom\Tweets\Models\Tweets"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[twitterFavorites twitterFavorites2]
+count = 15
+random = 1
+
+[followButton]
+size = "medium"
+align = "left"
+show-count = 0
+show-screen-name = 1
+dnt = 0
+lang = "en"
+==
+<!--************************************
+				Home Slider Start
+		*************************************-->
+<div class="clearfix"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="tg-homebannervtwo">
+                <div id="tg-homeslider" class="tg-homeslider owl-carousel tg-btnround tg-haslayout">
+
+
+                  <!--   <div class="item">
+                      <figure>
+                          <img src="{{ 'assets/images/slider/img-04.jpg'|theme}}" alt="image description">
+                          <figcaption class="tg-slidercontent">
+                              <div class="tg-slidercontentbox">
+                                  <a class="tg-btn" href="javascript:void(0);">read more</a>
+                                  <div class="tg-titledescription">
+                                      <h1>Annual Convocation 2017</h1>
+                                      <div class="tg-description"><p>Consectetur adipisicing elit sed do eiusmod tempor inci labore et dolore amit agna aliqua enimnate minim veniam quis nostrud exercitation ullamco laboris...</p></div>
+                                  </div>
+                              </div>
+                          </figcaption>
+                      </figure>
+                  </div> -->
+
+
+
+
+                    {% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+
+
+
+
+                 <div class="item">
+                        <figure>
+                            <!-- <img src="{{ 'assets/images/slider/img-01.jpg'|theme}}" alt="image description"> -->
+                            <img src="{{ record.images.thumb(auto,500)}}" alt="image description">
+                            <figcaption class="tg-slidercontent">
+                                <div class="tg-slidercontentbox">
+                                    <!-- <a class="tg-btn" href="javascript:void(0);">Tweet</a> -->
+                                    <div  class="tg-btn">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.content}}">Click To Tweet</a>
+												<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+                                    <div class="tg-titledescription">
+                                        <h1>{{record.title}}</h1>
+                                        <div class="tg-description">{{record.content}}</div>
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+
+
+{% if records.lastPage > 1 %}
+
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+
+{% endif %}
+                </div>
+                <!-- <div class="tg-noticeboardarea">
+                    <div class="tg-widget tg-widgetadmissionform">
+                        <div class="tg-widgetcontent">
+                         <h3>Twitter Feeds</h3>
+
+    {% for favorite in favorites %}
+
+            <p class="text">{{ favorite.text_processed|raw }}</p>
+            <p class="author">
+                <img src="{{ favorite.user.profile_image_url_https }}"/>
+
+                <span class="screen_name">
+                    <a href="{{ 'http://twitter.com/'~favorite.user.screen_name }}">{{ favorite.user.screen_name }}</a>
+                </span>
+            </p>
+
+    {% endfor %}
+
+
+
+
+                        </div>
+                    </div>
+
+                </div> -->
+
+
+<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+  <aside id="tg-sidebar" class="tg-sidebar">
+
+                <div class="tg-widget tg-widgetcampuses">
+                    <div class="tg-widgettitle">
+                        <h3>Twitter Feeds</h3>
+                    </div>
+
+                    <div class="tg-widgetcontent">
+                        <div id="tg-campusslider" class="tg-campusslider owl-carousel tg-campuses">
+
+
+
+
+
+  {% for favorite in favorites %}
+
+
+              <div class="item">
+                  <div class="tg-campus">
+                      <div class="tg-mapbox">
+                          <!-- <div class="tg-campuslocation"></div> -->
+                          <!-- <a class="tg-getdirection" href="">get direction</a> -->
+                          <p class="text">{{ favorite.text_processed|raw }}</p>
+                          <!-- <p class="author"> -->
+<div class="tg-noticeboard hidden-xs">
+                  <figure><img src="{{ favorite.user.profile_image_url_https }}"/>  </figure><br>
+                <span class="name">{{ favorite.user.name }}</span>
+                <br>
+                <span class="screen_name">
+                    <a href="{{ 'http://twitter.com/'~favorite.user.screen_name }}">{{ favorite.user.screen_name }}</a>
+                </span>
+            <!-- </p> -->
+          </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+
+
+
+
+    {% endfor %}
+
+
+  </div>
+  </div>
+
+                </div>
+                
+       {% component 'followButton' %}         
+</aside>
+
+
+
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--************************************
+        Home Slider End
+*************************************-->";s:5:"mtime";i:1619002726;s:6:"markup";s:7033:"<!--************************************
+				Home Slider Start
+		*************************************-->
+<div class="clearfix"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="tg-homebannervtwo">
+                <div id="tg-homeslider" class="tg-homeslider owl-carousel tg-btnround tg-haslayout">
+
+
+                  <!--   <div class="item">
+                      <figure>
+                          <img src="{{ 'assets/images/slider/img-04.jpg'|theme}}" alt="image description">
+                          <figcaption class="tg-slidercontent">
+                              <div class="tg-slidercontentbox">
+                                  <a class="tg-btn" href="javascript:void(0);">read more</a>
+                                  <div class="tg-titledescription">
+                                      <h1>Annual Convocation 2017</h1>
+                                      <div class="tg-description"><p>Consectetur adipisicing elit sed do eiusmod tempor inci labore et dolore amit agna aliqua enimnate minim veniam quis nostrud exercitation ullamco laboris...</p></div>
+                                  </div>
+                              </div>
+                          </figcaption>
+                      </figure>
+                  </div> -->
+
+
+
+
+                    {% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+
+
+
+
+                 <div class="item">
+                        <figure>
+                            <!-- <img src="{{ 'assets/images/slider/img-01.jpg'|theme}}" alt="image description"> -->
+                            <img src="{{ record.images.thumb(auto,500)}}" alt="image description">
+                            <figcaption class="tg-slidercontent">
+                                <div class="tg-slidercontentbox">
+                                    <!-- <a class="tg-btn" href="javascript:void(0);">Tweet</a> -->
+                                    <div  class="tg-btn">
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.content}}">Click To Tweet</a>
+												<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+                                    <div class="tg-titledescription">
+                                        <h1>{{record.title}}</h1>
+                                        <div class="tg-description">{{record.content}}</div>
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+
+
+{% if records.lastPage > 1 %}
+
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+
+{% endif %}
+                </div>
+                <!-- <div class="tg-noticeboardarea">
+                    <div class="tg-widget tg-widgetadmissionform">
+                        <div class="tg-widgetcontent">
+                         <h3>Twitter Feeds</h3>
+
+    {% for favorite in favorites %}
+
+            <p class="text">{{ favorite.text_processed|raw }}</p>
+            <p class="author">
+                <img src="{{ favorite.user.profile_image_url_https }}"/>
+
+                <span class="screen_name">
+                    <a href="{{ 'http://twitter.com/'~favorite.user.screen_name }}">{{ favorite.user.screen_name }}</a>
+                </span>
+            </p>
+
+    {% endfor %}
+
+
+
+
+                        </div>
+                    </div>
+
+                </div> -->
+
+
+<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+  <aside id="tg-sidebar" class="tg-sidebar">
+
+                <div class="tg-widget tg-widgetcampuses">
+                    <div class="tg-widgettitle">
+                        <h3>Twitter Feeds</h3>
+                    </div>
+
+                    <div class="tg-widgetcontent">
+                        <div id="tg-campusslider" class="tg-campusslider owl-carousel tg-campuses">
+
+
+
+
+
+  {% for favorite in favorites %}
+
+
+              <div class="item">
+                  <div class="tg-campus">
+                      <div class="tg-mapbox">
+                          <!-- <div class="tg-campuslocation"></div> -->
+                          <!-- <a class="tg-getdirection" href="">get direction</a> -->
+                          <p class="text">{{ favorite.text_processed|raw }}</p>
+                          <!-- <p class="author"> -->
+<div class="tg-noticeboard hidden-xs">
+                  <figure><img src="{{ favorite.user.profile_image_url_https }}"/>  </figure><br>
+                <span class="name">{{ favorite.user.name }}</span>
+                <br>
+                <span class="screen_name">
+                    <a href="{{ 'http://twitter.com/'~favorite.user.screen_name }}">{{ favorite.user.screen_name }}</a>
+                </span>
+            <!-- </p> -->
+          </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+
+
+
+
+    {% endfor %}
+
+
+  </div>
+  </div>
+
+                </div>
+                
+       {% component 'followButton' %}         
+</aside>
+
+
+
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--************************************
+        Home Slider End
+*************************************-->";s:4:"code";N;s:16:"twitterFavorites";a:2:{s:5:"count";s:1:"2";s:6:"random";s:1:"1";}s:11:"builderList";a:8:{s:10:"modelClass";s:25:"Tcom\Tweets\Models\Tweets";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:5:"title";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:1:"-";s:19:"detailsUrlParameter";s:2:"id";s:10:"pageNumber";s:11:"{{ :page }}";}s:34:"twitterFavorites twitterFavorites2";a:2:{s:5:"count";s:2:"15";s:6:"random";s:1:"1";}s:12:"followButton";a:6:{s:4:"size";s:6:"medium";s:5:"align";s:4:"left";s:10:"show-count";s:1:"0";s:16:"show-screen-name";s:1:"1";s:3:"dnt";s:1:"0";s:4:"lang";s:2:"en";}}}

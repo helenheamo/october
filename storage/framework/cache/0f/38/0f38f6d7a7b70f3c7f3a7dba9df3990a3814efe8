@@ -1,0 +1,1235 @@
+1619036919a:1:{s:8:"home.htm";a:11:{s:8:"fileName";s:8:"home.htm";s:7:"content";s:35706:"title = "Demonstration"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[builderList]
+modelClass = "Tcom\Tweets\Models\Tweets"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+recordsPerPage = 6
+pageNumber = "{{ :page }}"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "slug"
+postsPerPage = 15
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+{% partial 'slider' %}
+
+<!--************************************
+        Main Start
+*************************************-->
+<main id="tg-main" class="tg-main tg-haslayout">
+    <div class="container">
+        <div class="row">
+            <div id="tg-twocolumns" class="tg-twocolumns">
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                    <div id="tg-content" class="tg-content">
+                        <!-- <section class="tg-sectionspace tg-haslayout">
+                            <div class="tg-shortcode tg-welcomeandgreeting">
+                                <figure><img src="{{'assets/images/img-03.jpg'|theme}}" alt="image description"></figure>
+                                <div class="tg-shortcodetextbox">
+                                    <h2>Welcome &amp; Greetings!</h2>
+                                    <div class="tg-description">
+                                        <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore et dolore amit agna aliqua enimnate minim veniam quis nostrud exercitation ullamco laboris nisi utiata ...</p>
+                                    </div>
+                                    <span class="tg-name">Prof. Donovan Bradburn</span>
+                                    <span class="tg-designation">Vice Chancellor</span>
+                                    <div class="tg-btnpluslogo">
+                                        <a class="tg-btn" href="">read more</a>
+                                        <strong class="tg-universitylogo"><a href=""><img src="{{'assets/images/logo2.png'|theme}}" alt="image description"></a></strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> -->
+                        <section class="tg-sectionspace tg-haslayout">
+                            <div class="tg-borderheading">
+                                <h2>Latest Events</h2>
+                            </div>
+                            <div class="tg-events">
+
+
+
+                              {% set records = builderList.records %}
+                              {% set displayColumn = builderList.displayColumn %}
+                              {% set noRecordsMessage = builderList.noRecordsMessage %}
+                              {% set detailsPage = builderList.detailsPage %}
+                              {% set detailsKeyColumn = builderList.detailsKeyColumn %}
+                              {% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+                                  {% for record in records %}
+
+                                          {# Use spaceless tag to remove spaces inside the A tag. #}
+                                          {% spaceless %}
+                                              {% if detailsPage %}
+                                                  <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                                              {% endif %}
+{% if record.status == "Approved" %}
+                                <article class="tg-themepost tg-themepostleftimg">
+                                    <figure class="tg-featuredimg">
+                                        <a href="">
+                                            <img src="{{'assets/images/events/img-01.jpg'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+
+
+                                    <div class="tg-themepostcontent">
+                                        <ul class="tg-matadata">
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span>Campaign started at {{record.updated_at}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tg-themeposttitle">
+                                            <h3><a href="">{{record.title}}</a></h3>
+                                        </div>
+                                        <div class="tg-description">
+                                            <p>{{record.content}}</p>
+                                        </div>
+                                        <div class="tg-btnsbox">
+                                          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.content}}">Click To Tweet</a>
+                                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                            <!-- <a class="tg-btn" href="">read more</a> -->
+
+                                            <!-- <a class="tg-btn" href="">view all events</a> -->
+                                        </div>
+                                    </div>
+
+
+                                </article>
+  {% endif %}
+                                {% if detailsPage %}
+                                    </a>
+                                {% endif %}
+                              {% endspaceless %}
+
+                              {% else %}
+                              <li class="no-data">{{ noRecordsMessage }}</li>
+                              {% endfor %}
+
+
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-02.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">International Conference on Material Science 2017</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> -->
+
+
+
+
+
+
+
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+
+
+
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                    <article class="tg-themepost tg-themepostleftthumb">
+                        <figure class="tg-featuredimg">
+                            <a href="">
+                                <img src="{{'assets/images/events/img-02.jpg'|theme}}" alt="image description">
+                            </a>
+                        </figure>
+                        <div class="tg-themepostcontent">
+                            <ul class="tg-matadata">
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>{{record.title }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tg-themeposttitle">
+                                <h3>{{html_limit(record.content,60)|raw}}</h3>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.content}}">Click To Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+
+
+
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+
+
+
+
+
+                                    <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-03.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Biggest Reality Virtual University Convocatio Biggest Reality Virtual</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-04.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Launching Best Concept Motorbike for Abnormal</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-05.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Result Announcement for Fresh Graduates 2017</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-06.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Outdoor Dinner with Reputed Prof. Darwin ...</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-07.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">One Day Exibition at Mall of Dubai</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </section>
+                        <!-- <section class="tg-sectionspace tg-haslayout">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="tg-glanceatuoeandk">
+                                        <div class="tg-borderheading">
+                                            <h2>Glance at UOE&amp;K</h2>
+                                        </div>
+                                        <ul class="tg-gallery">
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-00.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-00.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-01.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-01.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-02.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-02.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-03.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-03.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-04.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-04.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-05.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-05.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-06.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-06.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-07.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-07.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-08.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-08.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-09.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-09.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                    <div class="tg-widget tg-widgetquicklinks">
+                                        <div class="tg-borderheading">
+                                            <h2>Quick Links</h2>
+                                        </div>
+                                        <div class="tg-widgetcontent">
+                                            <ul>
+                                                <li><a href="">Downloads Function Form</a></li>
+                                                <li><a href="">Admissions Guidline For New Students</a></li>
+                                                <li><a href="">UOE&amp;K Online Library</a></li>
+                                                <li><a href="">Multimedia and Entertainment</a></li>
+                                                <li><a href="">Annual Holiday Trip to Dubai 2017</a></li>
+                                                <li><a href="">Student Advisory June 27,2017</a></li>
+                                                <li><a href="">Parents Meeting 2017</a></li>
+                                                <li><a href="">Overseas &amp; E-Learning</a></li>
+                                                <li><a href="">FM Radio/TV</a></li>
+                                                <li><a href="">FAQ's</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> -->
+                        <section class="tg-sectionspace tg-haslayout">
+                            <div class="tg-latestnews">
+                                <div class="tg-borderheading">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div id="tg-latestnewsslider" class="tg-latestnewsslider owl-carousel tg-posts">
+
+
+
+
+{% set posts = blogPosts.posts %}
+
+
+    {% for post in posts %}
+        <!-- <li>
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3> -->
+
+
+
+
+            <div class="item">
+                <article class="tg-themepost tg-newspost">
+                    <figure class="tg-featuredimg">
+                        <a href="">
+                            <img src="{{'assets/images/themepost/img-05.jpg'|theme}}" alt="image description">
+<!-- <img src="{{post.featured_images[0]}}" alt="image description"> -->
+                        </a>
+                    </figure>
+                    <div class="tg-themepostcontent">
+                        <ul class="tg-matadata">
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-calendar"></i>
+                                    <span>
+                                      <!-- <p class="info"> -->
+                                          {% if post.categories.count %}
+                                              {% set categoryLinks = post.categories | map(c => "<a href=\"#{c.url}\">#{c.name}</a>") | join(', ') %}
+
+                                              {{ 'rainlab.blog::lang.post.posted_byline' | trans({
+                                                  date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans),
+                                                  categories: categoryLinks
+                                              }) }}
+                                          {% else %}
+                                              {{ 'rainlab.blog::lang.post.posted_byline_no_categories' | trans({
+                                                  date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans)
+                                              }) }}
+                                          {% endif %}
+                                      <!-- </p> -->
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                        </ul>
+                        <div class="tg-themeposttitle">
+                            <h3><a href="">{{ post.title }}</a></h3>
+                        </div>
+                        <div class="tg-description">
+                            <p>{{ post.summary | raw }} <a href=""> Read More</a></p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+
+
+
+
+            <!-- <p class="info">
+                {% if post.categories.count %}
+                    {% set categoryLinks = post.categories | map(c => "<a href=\"#{c.url}\">#{c.name}</a>") | join(', ') %}
+
+                    {{ 'rainlab.blog::lang.post.posted_byline' | trans({
+                        date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans),
+                        categories: categoryLinks
+                    }) }}
+                {% else %}
+                    {{ 'rainlab.blog::lang.post.posted_byline_no_categories' | trans({
+                        date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans)
+                    }) }}
+                {% endif %}
+            </p> -->
+
+
+        </li>
+    {% else %}
+        <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+    {% endfor %}
+
+<!--
+{% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName | page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName | page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName | page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %} -->
+
+
+
+
+
+
+
+
+                                </div>
+                                <!-- <div class="tg-btnsbox">
+                                    <a class="tg-btn" href="">view all news</a>
+                                </div> -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+
+                {% partial 'sidebar' %}
+
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="tg-sectionspace tg-haslayout">
+                        <div class="tg-affiliationscertifications">
+                            <!-- <div class="tg-borderheading">
+                                <h2>Affiliations / Certifications</h2>
+                            </div> -->
+                            <div id="tg-affiliationscertificationsslider" class="tg-affiliationscertificationsslider owl-carousel">
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-01.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-02.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-03.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-04.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-05.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-06.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!--************************************
+        Main End
+*************************************-->
+";s:5:"mtime";i:1619036314;s:6:"markup";s:35158:"{% partial 'slider' %}
+
+<!--************************************
+        Main Start
+*************************************-->
+<main id="tg-main" class="tg-main tg-haslayout">
+    <div class="container">
+        <div class="row">
+            <div id="tg-twocolumns" class="tg-twocolumns">
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                    <div id="tg-content" class="tg-content">
+                        <!-- <section class="tg-sectionspace tg-haslayout">
+                            <div class="tg-shortcode tg-welcomeandgreeting">
+                                <figure><img src="{{'assets/images/img-03.jpg'|theme}}" alt="image description"></figure>
+                                <div class="tg-shortcodetextbox">
+                                    <h2>Welcome &amp; Greetings!</h2>
+                                    <div class="tg-description">
+                                        <p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore et dolore amit agna aliqua enimnate minim veniam quis nostrud exercitation ullamco laboris nisi utiata ...</p>
+                                    </div>
+                                    <span class="tg-name">Prof. Donovan Bradburn</span>
+                                    <span class="tg-designation">Vice Chancellor</span>
+                                    <div class="tg-btnpluslogo">
+                                        <a class="tg-btn" href="">read more</a>
+                                        <strong class="tg-universitylogo"><a href=""><img src="{{'assets/images/logo2.png'|theme}}" alt="image description"></a></strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> -->
+                        <section class="tg-sectionspace tg-haslayout">
+                            <div class="tg-borderheading">
+                                <h2>Latest Events</h2>
+                            </div>
+                            <div class="tg-events">
+
+
+
+                              {% set records = builderList.records %}
+                              {% set displayColumn = builderList.displayColumn %}
+                              {% set noRecordsMessage = builderList.noRecordsMessage %}
+                              {% set detailsPage = builderList.detailsPage %}
+                              {% set detailsKeyColumn = builderList.detailsKeyColumn %}
+                              {% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+                                  {% for record in records %}
+
+                                          {# Use spaceless tag to remove spaces inside the A tag. #}
+                                          {% spaceless %}
+                                              {% if detailsPage %}
+                                                  <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                                              {% endif %}
+{% if record.status == "Approved" %}
+                                <article class="tg-themepost tg-themepostleftimg">
+                                    <figure class="tg-featuredimg">
+                                        <a href="">
+                                            <img src="{{'assets/images/events/img-01.jpg'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+
+
+                                    <div class="tg-themepostcontent">
+                                        <ul class="tg-matadata">
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-calendar"></i>
+                                                    <span>Campaign started at {{record.updated_at}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tg-themeposttitle">
+                                            <h3><a href="">{{record.title}}</a></h3>
+                                        </div>
+                                        <div class="tg-description">
+                                            <p>{{record.content}}</p>
+                                        </div>
+                                        <div class="tg-btnsbox">
+                                          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.content}}">Click To Tweet</a>
+                                      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                            <!-- <a class="tg-btn" href="">read more</a> -->
+
+                                            <!-- <a class="tg-btn" href="">view all events</a> -->
+                                        </div>
+                                    </div>
+
+
+                                </article>
+  {% endif %}
+                                {% if detailsPage %}
+                                    </a>
+                                {% endif %}
+                              {% endspaceless %}
+
+                              {% else %}
+                              <li class="no-data">{{ noRecordsMessage }}</li>
+                              {% endfor %}
+
+
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-02.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">International Conference on Material Science 2017</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> -->
+
+
+
+
+
+
+
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+    {% for record in records %}
+
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+
+
+
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                    <article class="tg-themepost tg-themepostleftthumb">
+                        <figure class="tg-featuredimg">
+                            <a href="">
+                                <img src="{{'assets/images/events/img-02.jpg'|theme}}" alt="image description">
+                            </a>
+                        </figure>
+                        <div class="tg-themepostcontent">
+                            <ul class="tg-matadata">
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>{{record.title }}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tg-themeposttitle">
+                                <h3>{{html_limit(record.content,60)|raw}}</h3>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://tcom.com" data-text = "{{record.content}}">Click To Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+
+
+
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+
+
+
+
+
+                                    <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-03.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Biggest Reality Virtual University Convocatio Biggest Reality Virtual</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-04.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Launching Best Concept Motorbike for Abnormal</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-05.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Result Announcement for Fresh Graduates 2017</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-06.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">Outdoor Dinner with Reputed Prof. Darwin ...</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                                        <article class="tg-themepost tg-themepostleftthumb">
+                                            <figure class="tg-featuredimg">
+                                                <a href="">
+                                                    <img src="{{'assets/images/events/img-07.jpg'|theme}}" alt="image description">
+                                                </a>
+                                            </figure>
+                                            <div class="tg-themepostcontent">
+                                                <ul class="tg-matadata">
+                                                    <li>
+                                                        <a href="">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span>Tuesday, Apr 21, 2017</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tg-themeposttitle">
+                                                    <h3><a href="">One Day Exibition at Mall of Dubai</a></h3>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </section>
+                        <!-- <section class="tg-sectionspace tg-haslayout">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    <div class="tg-glanceatuoeandk">
+                                        <div class="tg-borderheading">
+                                            <h2>Glance at UOE&amp;K</h2>
+                                        </div>
+                                        <ul class="tg-gallery">
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-00.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-00.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-01.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-01.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-02.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-02.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-03.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-03.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-04.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-04.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-05.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-05.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-06.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-06.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-07.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-07.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-08.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-08.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a class="tg-btnview" href="{{'assets/images/glance/img-09.jpg'|theme}}" data-rel="prettyPhoto[glance]"><i class="icon-magnifier"></i></a>
+                                                    <img src="{{'assets/images/glance/img-09.jpg'|theme}}" alt="image description">
+                                                </figure>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                    <div class="tg-widget tg-widgetquicklinks">
+                                        <div class="tg-borderheading">
+                                            <h2>Quick Links</h2>
+                                        </div>
+                                        <div class="tg-widgetcontent">
+                                            <ul>
+                                                <li><a href="">Downloads Function Form</a></li>
+                                                <li><a href="">Admissions Guidline For New Students</a></li>
+                                                <li><a href="">UOE&amp;K Online Library</a></li>
+                                                <li><a href="">Multimedia and Entertainment</a></li>
+                                                <li><a href="">Annual Holiday Trip to Dubai 2017</a></li>
+                                                <li><a href="">Student Advisory June 27,2017</a></li>
+                                                <li><a href="">Parents Meeting 2017</a></li>
+                                                <li><a href="">Overseas &amp; E-Learning</a></li>
+                                                <li><a href="">FM Radio/TV</a></li>
+                                                <li><a href="">FAQ's</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section> -->
+                        <section class="tg-sectionspace tg-haslayout">
+                            <div class="tg-latestnews">
+                                <div class="tg-borderheading">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div id="tg-latestnewsslider" class="tg-latestnewsslider owl-carousel tg-posts">
+
+
+
+
+{% set posts = blogPosts.posts %}
+
+
+    {% for post in posts %}
+        <!-- <li>
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3> -->
+
+
+
+
+            <div class="item">
+                <article class="tg-themepost tg-newspost">
+                    <figure class="tg-featuredimg">
+                        <a href="">
+                            <img src="{{'assets/images/themepost/img-05.jpg'|theme}}" alt="image description">
+<!-- <img src="{{post.featured_images[0]}}" alt="image description"> -->
+                        </a>
+                    </figure>
+                    <div class="tg-themepostcontent">
+                        <ul class="tg-matadata">
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-calendar"></i>
+                                    <span>
+                                      <!-- <p class="info"> -->
+                                          {% if post.categories.count %}
+                                              {% set categoryLinks = post.categories | map(c => "<a href=\"#{c.url}\">#{c.name}</a>") | join(', ') %}
+
+                                              {{ 'rainlab.blog::lang.post.posted_byline' | trans({
+                                                  date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans),
+                                                  categories: categoryLinks
+                                              }) }}
+                                          {% else %}
+                                              {{ 'rainlab.blog::lang.post.posted_byline_no_categories' | trans({
+                                                  date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans)
+                                              }) }}
+                                          {% endif %}
+                                      <!-- </p> -->
+                                    </span>
+                                </a>
+                            <!-- </li> -->
+                        </ul>
+                        <div class="tg-themeposttitle">
+                            <h3><a href="">{{ post.title }}</a></h3>
+                        </div>
+                        <div class="tg-description">
+                            <p>{{ post.summary | raw }} <a href=""> Read More</a></p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+
+
+
+
+            <!-- <p class="info">
+                {% if post.categories.count %}
+                    {% set categoryLinks = post.categories | map(c => "<a href=\"#{c.url}\">#{c.name}</a>") | join(', ') %}
+
+                    {{ 'rainlab.blog::lang.post.posted_byline' | trans({
+                        date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans),
+                        categories: categoryLinks
+                    }) }}
+                {% else %}
+                    {{ 'rainlab.blog::lang.post.posted_byline_no_categories' | trans({
+                        date: post.published_at | date('rainlab.blog::lang.post.date_format' | trans)
+                    }) }}
+                {% endif %}
+            </p> -->
+
+
+        </li>
+    {% else %}
+        <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+    {% endfor %}
+
+<!--
+{% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName | page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName | page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName | page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %} -->
+
+
+
+
+
+
+
+
+                                </div>
+                                <!-- <div class="tg-btnsbox">
+                                    <a class="tg-btn" href="">view all news</a>
+                                </div> -->
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+
+                {% partial 'sidebar' %}
+
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <section class="tg-sectionspace tg-haslayout">
+                        <div class="tg-affiliationscertifications">
+                            <!-- <div class="tg-borderheading">
+                                <h2>Affiliations / Certifications</h2>
+                            </div> -->
+                            <div id="tg-affiliationscertificationsslider" class="tg-affiliationscertificationsslider owl-carousel">
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-01.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-02.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-03.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-04.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-05.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="item">
+                                    <figure>
+                                        <a href="">
+                                            <img src="{{'assets/images/brands/img-06.png'|theme}}" alt="image description">
+                                        </a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!--************************************
+        Main End
+*************************************-->";s:4:"code";N;s:5:"title";s:13:"Demonstration";s:3:"url";s:1:"/";s:6:"layout";s:7:"default";s:9:"is_hidden";s:1:"0";s:11:"builderList";a:9:{s:10:"modelClass";s:25:"Tcom\Tweets\Models\Tweets";s:5:"scope";s:1:"-";s:10:"scopeValue";s:12:"{{ :scope }}";s:13:"displayColumn";s:5:"title";s:16:"noRecordsMessage";s:16:"No records found";s:11:"detailsPage";s:1:"-";s:19:"detailsUrlParameter";s:2:"id";s:14:"recordsPerPage";s:1:"6";s:10:"pageNumber";s:11:"{{ :page }}";}s:9:"blogPosts";a:7:{s:10:"pageNumber";s:11:"{{ :page }}";s:14:"categoryFilter";s:4:"slug";s:12:"postsPerPage";s:2:"15";s:14:"noPostsMessage";s:14:"No posts found";s:9:"sortOrder";s:17:"published_at desc";s:12:"categoryPage";s:13:"blog/category";s:8:"postPage";s:9:"blog/post";}}}
